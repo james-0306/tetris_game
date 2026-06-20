@@ -39,3 +39,16 @@ class Game:
         if not self.block_inside() or not self.block_fits():
             self._current_block.move_block(-1, 0)
             self.lock_block()
+
+    def lock_block(self):
+        tiles = self._current_block.get_cell_positions()
+        for position in tiles:
+            self._grid.grid[position.row][position.column] = self._current_block.id
+        self._current_block = self._next_block
+        self._next_block = self.get_random_block()
+        rows_cleared = self._grid.clear_full_rows()
+        self.update_score(rows_cleared, 0)
+        if not self.block_fits():
+            self.game_over = True
+
+            
