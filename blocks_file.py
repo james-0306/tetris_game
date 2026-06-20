@@ -48,4 +48,15 @@ class Blocks:
                 self.cell_size - 1
             )
             pygame.draw.rect(screen, self.colors[self.id], tile_rect)
-            
+
+# by using inheritance let's inherit the parent class
+class LBlock(Blocks):
+    def __init__(self):
+        super().__init__(1)
+        self.cells = {
+            0: [Position(0, 2), Position(1, 0), Position(1, 1), Position(1, 2)],
+            1: [Position(0, 1), Position(1, 1), Position(2, 1), Position(2, 2)],
+            2: [Position(1, 0), Position(1, 1), Position(1, 2), Position(2, 0)],
+            3: [Position(0, 0), Position(0, 1), Position(1, 1), Position(2, 1)],
+        }
+        self.move_block(0, 3)

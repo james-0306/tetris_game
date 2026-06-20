@@ -56,3 +56,4 @@ class Grid:
                     self.cell_size - 1
                 )
                 pygame.draw.rect(screen, self.colors[cell_value], cell_rect)
+
