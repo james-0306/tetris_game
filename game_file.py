@@ -50,7 +50,7 @@ class Game:
         self.update_score(rows_cleared, 0)
         if not self.block_fits():
             self.game_over = True
-            
+
     def reset_game(self):
         self._grid.reset_grid()
         self._current_block = self.get_random_block()
@@ -64,4 +64,10 @@ class Game:
             if not self._grid.is_empty(tile.row, tile.column):
                 return False
         return True
+
+    def rotate(self):
+        self._current_block.rotate_block()
+        if not self.block_inside() or not self.block_fits():
+            self._current_block.undo_rotation()
+
 
