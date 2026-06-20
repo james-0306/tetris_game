@@ -41,3 +41,13 @@ while True:
                 game.rotate()
         if event.type == game_update_event and not game.game_over:
             game.move_down()
+
+    screen.fill(Colors.dark_blue)
+    score_value_surface = title_font.render(str(game.score), True, Colors.white)
+
+    screen.blit(score_surface, (365, 20))
+    screen.blit(next_surface, (375, 180))
+
+
+
+
