@@ -48,6 +48,17 @@ while True:
     screen.blit(score_surface, (365, 20))
     screen.blit(next_surface, (375, 180))
 
+    if game.game_over:
+        screen.blit(game_over_surface, (320, 450))
+
+    pygame.draw.rect(screen, Colors.light_blue, score_rect, 0, 10)
+    screen.blit(score_value_surface, score_value_surface.get_rect(centerx=score_rect.centerx, centery=score_rect.centery))
+    pygame.draw.rect(screen, Colors.light_blue, next_rect, 0, 10)
+    game.draw_game(screen)
+
+    pygame.display.update()
+    clock.tick(60)
+
 
 
 
