@@ -59,8 +59,8 @@ class Game:
         self.game_over = False
 
     def block_fits(self):
-        tiles = self._current_block.get_cell_positions()
-        for tile in tiles:
+        tiles_block = self._current_block.get_cell_positions()
+        for tile in tiles_block:
             if not self._grid.is_empty(tile.row, tile.column):
                 return False
         return True
@@ -71,10 +71,21 @@ class Game:
             self._current_block.undo_rotation()
 
     def block_inside(self):
-        tiles = self._current_block.get_cell_positions()
-        for tile in tiles:
+        tiles_block = self._current_block.get_cell_positions()
+        for tile in tiles_block:
             if not self._grid.is_inside(tile.row, tile.column):
                 return False
         return True
+
+    def draw_game(self, screen):
+        self._grid.draw_grid(screen)
+        self._current_block.draw_block(screen, 11, 11)
+
+        if self._next_block.id == 3:
+            self._next_block.draw_block(screen, 255, 290)
+        elif self._next_block.id == 4:
+            self._next_block.draw_block(screen, 255, 280)
+        else:
+            self._next_block.draw_block(screen, 270, 270)
 
 
