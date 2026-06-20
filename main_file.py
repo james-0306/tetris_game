@@ -21,3 +21,23 @@ game = Game()
 
 game_update_event = pygame.USEREVENT
 pygame.time.set_timer(game_update_event, 200)
+
+while True:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            sys.exit()
+        if event.type == pygame.KEYDOWN:
+            if game.game_over:
+                game.reset_game()
+            elif event.key == pygame.K_LEFT:
+                game.move_left()
+            elif event.key == pygame.K_RIGHT:
+                game.move_right()
+            elif event.key == pygame.K_DOWN:
+                game.move_down()
+                game.update_score(0, 1)
+            elif event.key == pygame.K_UP:
+                game.rotate()
+        if event.type == game_update_event and not game.game_over:
+            game.move_down()
