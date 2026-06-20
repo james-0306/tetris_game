@@ -50,5 +50,18 @@ class Game:
         self.update_score(rows_cleared, 0)
         if not self.block_fits():
             self.game_over = True
-
             
+    def reset_game(self):
+        self._grid.reset_grid()
+        self._current_block = self.get_random_block()
+        self._next_block = self.get_random_block()
+        self.score = 0
+        self.game_over = False
+
+    def block_fits(self):
+        tiles = self._current_block.get_cell_positions()
+        for tile in tiles:
+            if not self._grid.is_empty(tile.row, tile.column):
+                return False
+        return True
+
