@@ -23,3 +23,19 @@ class Game:
         elif lines_cleared == 3:
             self.score += 500
         self.score += move_down_points
+
+    def move_left(self):
+        self._current_block.move_block(0, -1)
+        if not self.block_inside() or not self.block_fits():
+            self._current_block.move_block(0, 1)
+
+    def move_right(self):
+        self._current_block.move_block(0, 1)
+        if not self.block_inside() or not self.block_fits():
+            self._current_block.move_block(0, -1)
+
+    def move_down(self):
+        self._current_block.move_block(1, 0)
+        if not self.block_inside() or not self.block_fits():
+            self._current_block.move_block(-1, 0)
+            self.lock_block()
