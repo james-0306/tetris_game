@@ -19,3 +19,11 @@ class Blocks:
     def move_block(self, rows, columns):
         self.row_offset += rows
         self.column_offset += columns
+
+    def get_cell_positions(self):
+        tiles = self.cells[self.rotation_state]
+        moved_tiles = []
+        for position in tiles:
+            new_position = Position(position.row + self.row_offset, position.column + self.column_offset)
+            moved_tiles.append(new_position)
+        return moved_tiles
