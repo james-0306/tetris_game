@@ -18,3 +18,6 @@ pygame.display.set_caption("Tetris")
 
 clock = pygame.time.Clock()
 game = Game()
+
+game_update_event = pygame.USEREVENT
+pygame.time.set_timer(game_update_event, 200)
