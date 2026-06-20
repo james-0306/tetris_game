@@ -14,3 +14,12 @@ class Game:
     def get_random_block(self):
         blocks_pool = [IBlock(), JBlock(), LBlock(), OBlock(), SBlock(), TBlock(), ZBlock()]
         return random.choice(blocks_pool)
+
+    def update_score(self, lines_cleared, move_down_points):
+        if lines_cleared == 1:
+            self.score += 100
+        elif lines_cleared == 2:
+            self.score += 300
+        elif lines_cleared == 3:
+            self.score += 500
+        self.score += move_down_points
