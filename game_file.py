@@ -10,3 +10,7 @@ class Game:
         self._next_block = self.get_random_block()
         self.game_over = False
         self.score = 0
+
+    def get_random_block(self):
+        blocks_pool = [IBlock(), JBlock(), LBlock(), OBlock(), SBlock(), TBlock(), ZBlock()]
+        return random.choice(blocks_pool)
