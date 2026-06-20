@@ -15,3 +15,7 @@ class Blocks:
         self.column_offset = 0
         self.rotation_state = 0
         self.colors = Colors.get_cell_colors()
+
+    def move_block(self, rows, columns):
+        self.row_offset += rows
+        self.column_offset += columns
