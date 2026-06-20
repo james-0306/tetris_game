@@ -70,4 +70,11 @@ class Game:
         if not self.block_inside() or not self.block_fits():
             self._current_block.undo_rotation()
 
+    def block_inside(self):
+        tiles = self._current_block.get_cell_positions()
+        for tile in tiles:
+            if not self._grid.is_inside(tile.row, tile.column):
+                return False
+        return True
+
 
